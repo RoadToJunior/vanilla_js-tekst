@@ -9,12 +9,14 @@ const spnCursor = document.querySelector(".cursor");
 const txt = ["tekst1", "tekst2", "tekst3"];
 
 let activeText = 0;
-let activeLetter = 0;
+let activeLetter = -15;
 
 // Implementacja
 const addLetter = () => {
   // Użyj w środku setTimeout
-  spnText.textContent += txt[activeText][activeLetter];
+  if (activeLetter >= 0) {
+    spnText.textContent += txt[activeText][activeLetter];
+  }
   activeLetter++;
   if (activeLetter === txt[activeText].length) {
     activeText++;
