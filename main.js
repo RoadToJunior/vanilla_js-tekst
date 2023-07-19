@@ -16,11 +16,17 @@ const addLetter = () => {
   // Użyj w środku setTimeout
   spnText.textContent += txt[activeText][activeLetter];
   activeLetter++;
-  setTimeout(addLetter, activeLetter);
   if (activeLetter === txt[activeText].length) {
-    activeLetter = 0;
     activeText++;
+
+    if (activeText === txt.length) return;
+    return setTimeout(() => {
+      activeLetter = 0;
+      spnText.textContent = "";
+      addLetter();
+    }, 2000);
   }
+  setTimeout(addLetter, 100);
 };
 
 addLetter(); //pierwsze wywołanie
